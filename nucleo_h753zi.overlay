@@ -1,0 +1,27 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/* Enable the USB OTG Full-Speed peripheral */
+&usbotg_fs {
+	status = "okay";
+
+	/* Create the required node for the CDC ACM virtual UART */
+	cdc_acm_uart: cdc_acm_uart {
+		compatible = "zephyr,cdc-acm-uart";
+		label = "CDC_ACM_0";
+	};
+};
+
+/*
+ * You can optionally set the USB CDC ACM as the system console.
+ * This will redirect printk and logging output to the USB virtual COM port
+ * instead of the ST-LINK VCP.
+ */
+/*
+/ {
+	chosen {
+		zephyr,console = &cdc_acm_uart;
+	};
+};
+*/
