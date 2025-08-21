@@ -1,0 +1,17 @@
+# zephyr-project/.claude/settings.json
+{
+  "env": {
+    "VIRTUAL_ENV": "./zephyr-env",
+    "PATH": "./zephyr-env/bin:$PATH",
+    "ZEPHYR_BASE": "./zephyr"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(source zephyr-env/bin/activate && *)",
+      "Bash(west *)",
+      "Bash(pip *)",
+      "Read(./zephyr/**)",
+      "Write(./src/**)"
+    ]
+  }
+}
