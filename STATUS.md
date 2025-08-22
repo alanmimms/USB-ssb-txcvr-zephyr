@@ -110,3 +110,29 @@ base application with the following components:
 This configuration successfully builds and provides a stable USB
 Ethernet interface with an IPv6 link-local address, meeting all the
 specified requirements.
+
+4. Future Firmware Update Strategy
+
+For the production SDR transceiver, a firmware update capability is
+planned with the following design decisions:
+
+* *Serial-based Recovery*: A small recovery bootloader (~32-64KB) that
+  provides firmware update capability via the USB CDC-ACM (virtual COM
+  port) interface.
+
+* *YMODEM Protocol*: Use YMODEM for cross-platform compatibility,
+  supporting standard terminal programs on Windows (TeraTerm, PuTTY),
+  macOS/Linux (minicom, screen). YMODEM provides built-in error
+  correction and automatic file transfer.
+
+* *Single Firmware Copy*: With only 2MB of flash available, the design
+  will use a single firmware partition rather than dual-banking. The
+  recovery bootloader can reflash the main application area directly.
+
+* *Recovery Activation*: If the main application fails to boot or a
+  special button sequence is detected, the device remains in recovery
+  mode, presenting as a virtual COM port for firmware updates.
+
+This approach prioritizes user accessibility across all major operating
+systems while maintaining a small flash footprint suitable for the
+STM32H753 constraints.

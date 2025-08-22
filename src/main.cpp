@@ -29,7 +29,8 @@ public:
       isReady = false;
       return;
     }
-    LOG_INF("Blinker initialized successfully");
+    LOG_INF("Blinker initialized successfully for %s pin %d", 
+            led.port->name, led.pin);
     isReady = true;
   }
 

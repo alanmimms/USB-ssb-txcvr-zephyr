@@ -21,3 +21,6 @@
 - Use west commands for all Zephyr operations
 - Test on hardware using west flash
 - Use west build -t menuconfig for configuration
+
+## Important Instructions
+- NEVER offer to commit changes until explicitly asked by the user
